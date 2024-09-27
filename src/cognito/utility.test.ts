@@ -1,4 +1,4 @@
-import { config, user } from '../../test/utilities';
+import { config, user } from '../test/utilities';
 import { getPool, getUser } from './utility';
 
 test('getPool returns a valid value', () => {

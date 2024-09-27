@@ -1,4 +1,4 @@
-import { config, ensureExists } from '../../test/utilities';
+import { config, ensureExists } from '../test/utilities';
 import { deleteUser } from './user';
 
 // This may wait for verification, so give it a long timeout

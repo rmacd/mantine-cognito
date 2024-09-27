@@ -1,3 +1,6 @@
+"use client";
+
+import React from 'react';
 import { TextInput, Anchor, Paper, Title, Text, Container, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
@@ -6,6 +9,8 @@ import { signUp } from '../cognito';
 import { PasswordCreateInput } from '../PasswordCreateInput';
 import { useCognito } from '../CognitoProvider';
 import type { LoginLifecycle } from '../Login';
+
+import '../Base.css';
 
 export interface RegisterFormProps {
   email?: string;
@@ -49,11 +54,11 @@ export const RegisterForm = ({ email, setEmail, setStage }: RegisterFormProps) =
 
   return (
     <Container size={420} my={40}>
-      <Title align="center">
+      <Title className={"centred"}>
         <Text>Register</Text>
       </Title>
 
-      <Text color="dimmed" size="sm" align="center" mt={5}>
+      <Text c="dimmed" size="sm" className={"centred"} mt={5}>
         <Text span> Already have an account?</Text>{' '}
         <Anchor
           size="sm"

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Progress, PasswordInput, Group, Text, Center } from '@mantine/core';
 import { useInputState } from '@mantine/hooks';
 import { IconCheck, IconX } from '@tabler/icons-react';
@@ -8,7 +9,7 @@ export type PasswordCreateInputProps = PasswordInputProps;
 
 const PasswordRequirement = ({ meets, label }: { meets: boolean; label: string }) => {
   return (
-    <Text color={meets ? 'teal' : 'red'} mt={5} size="sm">
+    <Text c={meets ? 'teal' : 'red'} mt={5} size="sm">
       <Center inline>
         {meets ? <IconCheck size={12} stroke={1.5} /> : <IconX size={12} stroke={1.5} />}
         <Box ml={7}>{label}</Box>
@@ -62,7 +63,6 @@ export const PasswordCreateInput = (props: PasswordCreateInputProps) => {
     .map((_, index) => {
       return (
         <Progress
-          styles={{ bar: { transitionDuration: '0ms' } }}
           value={
             valueString.length > 0 && index === 0
               ? 100
@@ -70,7 +70,7 @@ export const PasswordCreateInput = (props: PasswordCreateInputProps) => {
               ? 100
               : 0
           }
-          color={strength > 80 ? 'teal' : strength > 50 ? 'yellow' : 'red'}
+          c={strength > 80 ? 'teal' : strength > 50 ? 'yellow' : 'red'}
           key={index}
           size={4}
         />
@@ -81,7 +81,7 @@ export const PasswordCreateInput = (props: PasswordCreateInputProps) => {
     <div>
       <PasswordInput {...props} onChange={onChange} />
 
-      <Group spacing={5} grow mt="xs" mb="md">
+      <Group gap={5} grow mt="xs" mb="md">
         {bars}
       </Group>
 

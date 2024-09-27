@@ -1,3 +1,6 @@
+"use client";
+
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Stack, Title, Button, Text, PinInput, Anchor, Group, rem, TextInput } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
@@ -100,13 +103,12 @@ export const MFASetup = ({ mfaAppName }: MFASetupProps) => {
   const enabling =
     code !== undefined ? (
       <form>
-        <Stack spacing="lg">
-          <Group spacing={rem(5)}>
+        <Stack gap="lg">
+          <Group gap={rem(5)}>
             <Text size="sm" span>
               Scan the qr code or{' '}
             </Text>
-            <Anchor
-              span
+            <Text component={"span"}
               size="sm"
               onClick={() => {
                 clipboard.copy(code);
@@ -118,7 +120,7 @@ export const MFASetup = ({ mfaAppName }: MFASetupProps) => {
               }}
             >
               click here
-            </Anchor>
+            </Text>
             <Text size="sm" span>
               to copy the secret code.
             </Text>
@@ -127,24 +129,24 @@ export const MFASetup = ({ mfaAppName }: MFASetupProps) => {
           <QRCodeSVG value={value} />
           <Text size="sm">Then enter the code from your authenticator app.</Text>
           <TextInput label="Device Name" {...form.getInputProps('deviceName')} />
-          <Stack spacing={5}>
+          <Stack gap={5}>
             <Text size="xs">Code</Text>
             <PinInput
               autoFocus
               type="number"
               size="xl"
               length={6}
-              required
+              // required={"true"} // todo - this property doesn't exist
               {...form.getInputProps('pin')}
             />
-            <Text size="xs" color="red">
+            <Text size="xs" c="red">
               {form.errors.pin}
             </Text>
           </Stack>
         </Stack>
       </form>
     ) : (
-      <Text size="sm" color="red">
+      <Text size="sm" c="red">
         No code received.
       </Text>
     );
@@ -155,7 +157,7 @@ export const MFASetup = ({ mfaAppName }: MFASetupProps) => {
       {mode === 'disabled' && <Button onClick={onStartEnable}>Enable 2FA</Button>}
       {mode === 'enabling' && enabling}
       {mode === 'enabled' && (
-        <Button color="red" onClick={onDisable}>
+        <Button c="red" onClick={onDisable}>
           Disable 2FA
         </Button>
       )}

@@ -1,7 +1,9 @@
-import { createContext, useContext } from 'react';
+"use client";
+
+import React, { createContext, useContext } from 'react';
 
 import { logout, presign } from '../cognito';
-import type { CognitoConfig } from '../cognito/utility';
+import { CognitoConfig } from '../cognito';
 
 export interface CognitoContextType {
   config: CognitoConfig;

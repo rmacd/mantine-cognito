@@ -1,5 +1,8 @@
-import { Anchor, Paper, Title, Text, Container } from '@mantine/core';
+import React from "react";
+import { Paper, Title, Text, Container } from '@mantine/core';
 import type { LoginStage } from '../Login';
+
+import '../Base.css';
 
 export interface PostRegisterProps {
   email?: string;
@@ -8,11 +11,11 @@ export interface PostRegisterProps {
 export const PostRegister = ({ email, setStage }: PostRegisterProps) => {
   return (
     <Container size={420} my={40}>
-      <Title align="center">
+      <Title className={"centred"}>
         <Text>Registered!</Text>
       </Title>
 
-      <Text color="dimmed" size="sm" align="center" mt={5}>
+      <Text c="dimmed" size="sm" className={"centred"} mt={5}>
         <Text span> Thank you for registering! </Text>
       </Text>
 
@@ -23,16 +26,9 @@ export const PostRegister = ({ email, setStage }: PostRegisterProps) => {
         <Text span size="sm">
           Once you have validated
         </Text>{' '}
-        <Anchor
-          span
-          size="sm"
-          component="button"
-          onClick={() => {
+        <Text component={"button"} variant={"link"} size={"sm"} onClick={() => {
             setStage?.('login');
-          }}
-        >
-          login
-        </Anchor>{' '}
+        }}>login</Text>{' '}
         <Text span size="sm">
           again.
         </Text>

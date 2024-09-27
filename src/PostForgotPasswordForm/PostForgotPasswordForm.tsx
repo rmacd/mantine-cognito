@@ -1,3 +1,6 @@
+"use client";
+
+import React from 'react';
 import { Paper, Title, Text, Container, Button, TextInput, Anchor } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
@@ -5,6 +8,8 @@ import { confirmPassword } from '../cognito';
 import { useCognito } from '../CognitoProvider';
 import { PasswordCreateInput } from '../PasswordCreateInput';
 import type { LoginStage } from '../Login';
+
+import '../Base.css';
 
 export interface PostForgotPasswordFormProps {
   email?: string;
@@ -43,22 +48,21 @@ export const PostForgotPasswordForm = ({ email, setStage }: PostForgotPasswordFo
 
   return (
     <Container size={420} my={40}>
-      <Title align="center">
+      <Title className={"centred"}>
         <Text>Reset Password</Text>
       </Title>
 
-      <Text color="dimmed" size="sm" align="center" mt={5}>
+      <Text c="dimmed" size="sm" className={"centred"} mt={5}>
         <Text span size="sm">
           Enter the code sent to {email} to reset your password or{' '}
         </Text>
-        <Anchor
-          span
+        <Text component={"span"}
           onClick={() => {
             setStage?.('forgot');
           }}
         >
           request
-        </Anchor>
+        </Text>
         <Text span size="sm">
           {' '}
           a new confirmation code.

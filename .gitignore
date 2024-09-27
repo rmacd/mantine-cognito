@@ -38,3 +38,6 @@ coverage
 # project
 .eslintcache
 storybook-static
+
+*.tgz
+dist/

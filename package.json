@@ -1,7 +1,7 @@
 {
-  "name": "@milkbar/mantine-cognito",
-  "description": "A client side UI for AWS Cognito using Mantine.dev components.",
-  "version": "0.1.1-beta.1",
+  "name": "@rmacd/mantine-cognito",
+  "description": "A client side UI for AWS Cognito using Mantine.dev components: name updated to stop NPM from trying to use the main version rather than this fork.",
+  "version": "0.1.0",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
@@ -10,13 +10,19 @@
     "name": "Rob Blau",
     "email": "robblau@milkbar.com"
   },
-  "homepage": "https://github.com/milkbar/mantine-cognito",
+  "contributors": [
+    {
+      "name": "Ronald MacDonald",
+      "email": "ronald@rmacd.com"
+    }
+  ],
+  "homepage": "https://github.com/rmacd/mantine-cognito",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/milkbar/mantine-cognito.git"
+    "url": "git+https://github.com/rmacd/mantine-cognito.git"
   },
   "bugs": {
-    "url": "https://github.com/milkbar/mantine-cognito/issues"
+    "url": "https://github.com/rmacd/mantine-cognito/issues"
   },
   "keywords": [
     "mantine",
@@ -35,25 +41,38 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@aws-crypto/sha256-js": "^4.0.0",
+    "@aws-crypto/sha256-js": "^5.2.0",
     "@aws-sdk/credential-providers": "^3.291.0",
-    "@aws-sdk/protocol-http": "^3.290.0",
-    "@aws-sdk/signature-v4": "^3.290.0",
     "@aws-sdk/util-format-url": "^3.290.0",
+    "@smithy/protocol-http": "^4.1.3",
+    "@smithy/signature-v4": "^4.1.4",
     "amazon-cognito-identity-js": "^6.1.2",
-    "qrcode.react": "^3.1.0",
+    "qrcode.react": "^4.0.1",
     "ua-parser-js": "^1.0.34"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
-    "@mantine/core": "^6.0.1",
-    "@mantine/form": "^6.0.1",
-    "@mantine/hooks": "^6.0.1",
-    "@mantine/notifications": "^6.0.2",
-    "@tabler/icons-react": "^2.10.0",
+    "@mantine/core": "^7.0.0",
+    "@mantine/form": "^7.0.0",
+    "@mantine/hooks": "^7.0.0",
+    "@mantine/notifications": "^7.0.0",
+    "@tabler/icons-react": "^3.17.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@types/ua-parser-js": "^0.7.36"
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.6.1",
+    "@types/react": "^18.3.8",
+    "@types/ua-parser-js": "^0.7.36",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.4.5",
+    "prop-types": "^15.8.1"
+  },
+  "scripts": {
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:css": "copyfiles -f src/Base.css esm/ && copyfiles -f src/Base.css cjs/",
+    "build": "rm -rf {cjs,dist,esm} && npm run build:cjs && npm run build:esm && npm run build:css",
+    "publish": "npm publish --scope=@rmacd"
   }
 }

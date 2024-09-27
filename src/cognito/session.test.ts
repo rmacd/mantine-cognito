@@ -1,5 +1,5 @@
 import { login } from './session';
-import { config, ensureExists, user } from '../../test/utilities';
+import { config, ensureExists, user } from '../test/utilities';
 
 // This may wait for verification, so give it a long timeout
 beforeAll(async () => {

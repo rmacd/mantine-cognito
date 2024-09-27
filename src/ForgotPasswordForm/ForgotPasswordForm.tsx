@@ -1,9 +1,14 @@
+"use client";
+
+import React from 'react';
 import { Paper, Title, Text, Container, Button, TextInput, Anchor } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 import { forgotPassword } from '../cognito';
 import { useCognito } from '../CognitoProvider';
 import type { LoginLifecycle } from '../Login';
+
+import '../Base.css';
 
 export interface ForgotPasswordFormProps {
   email?: string;
@@ -43,11 +48,11 @@ export const ForgotPasswordForm = ({ email, setEmail, setStage }: ForgotPassword
 
   return (
     <Container size={420} my={40}>
-      <Title align="center">
+      <Title className={"centred"}>
         <Text>Recover password</Text>
       </Title>
 
-      <Text color="dimmed" size="sm" align="center" mt={5}>
+      <Text c="dimmed" size="sm" className={"centred"} mt={5}>
         <Text span>Kick off a password recovery or return to the </Text>
         <Anchor
           onClick={() => {

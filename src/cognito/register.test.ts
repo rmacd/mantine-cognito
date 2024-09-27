@@ -1,4 +1,4 @@
-import { ensureExists } from '../../test/utilities';
+import { ensureExists } from '../test/utilities';
 
 test('signUp succeeds', async () => {
   await ensureExists();

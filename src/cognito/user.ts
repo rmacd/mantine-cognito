@@ -23,6 +23,9 @@ export const getUserAttributes = async (config: CognitoConfig) => {
         attributes != null
           ? attributes.reduce((acc, cur) => ({ ...acc, [cur.getName()]: cur.getValue() }), {})
           : {};
+
+      // todo surely there's a better way of pulling this back to client
+      arg.accessToken = cognitoUser.getSignInUserSession().getAccessToken().getJwtToken();
       resolve(arg);
     });
   });

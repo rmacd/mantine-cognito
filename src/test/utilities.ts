@@ -1,5 +1,5 @@
 import { error } from 'console';
-import { signUp, login, deleteUser } from '../src/cognito';
+import { signUp, login, deleteUser } from '../cognito/index';
 
 if (
   !process.env.COGNITO_CLIENT_ID ||

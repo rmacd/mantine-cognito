@@ -1,5 +1,8 @@
+import React from 'react';
 import { Paper, Title, Text, Container, Anchor } from '@mantine/core';
 import type { LoginStage } from '../Login';
+
+import '../Base.css';
 
 export interface PasswordResetFormProps {
   email?: string;
@@ -9,11 +12,11 @@ export interface PasswordResetFormProps {
 export const PasswordResetForm = ({ email, setStage }: PasswordResetFormProps) => {
   return (
     <Container size={420} my={40}>
-      <Title align="center">
+      <Title className={"centred"}>
         <Text>Password Reset</Text>
       </Title>
 
-      <Text color="dimmed" size="sm" align="center" mt={5}>
+      <Text c="dimmed" size="sm" className={"centred"} mt={5}>
         <Text span>The password{email !== undefined && ` for ${email}`} has been reset.</Text>
       </Text>
 
@@ -21,15 +24,14 @@ export const PasswordResetForm = ({ email, setStage }: PasswordResetFormProps) =
         <Text span size="sm">
           Your password has been successfully reset, return to{' '}
         </Text>
-        <Anchor
-          span
+        <Text component={"span"}
           size="sm"
           onClick={() => {
             setStage?.('login');
           }}
         >
           login
-        </Anchor>{' '}
+        </Text>{' '}
         <Text span size="sm">
           to continue.
         </Text>

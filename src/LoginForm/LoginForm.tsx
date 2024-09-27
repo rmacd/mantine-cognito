@@ -1,3 +1,6 @@
+"use client";
+
+import React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { useForm } from '@mantine/form';
 import {
@@ -15,10 +18,12 @@ import {
   Stack,
 } from '@mantine/core';
 
-import { getUserAttributes, login } from '../cognito';
+import {getUserAttributes, getUserData, login} from '../cognito';
 import { useCognito } from '../CognitoProvider';
-import type { LoginStage } from '../Login/Login';
+import type { LoginStage } from '../Login';
 import type { UserAttributes } from '../cognito';
+
+import '../Base.css';
 
 export interface LoginFormProps {
   email?: string;
@@ -97,10 +102,10 @@ export const LoginForm = ({ email, setStage, onLogin, setEmail }: LoginFormProps
 
   return (
     <Container size={420} my={40}>
-      <Title align="center">
+      <Title className={"centred"}>
         <Text>Welcome back!</Text>
       </Title>
-      <Text color="dimmed" size="sm" align="center" mt={5}>
+      <Text c="dimmed" size="sm" className={"centred"} mt={5}>
         <Text span>{"Don't have an account yet? "}</Text>
         <Anchor
           size="sm"
@@ -132,7 +137,7 @@ export const LoginForm = ({ email, setStage, onLogin, setEmail }: LoginFormProps
                 mt="md"
               />
 
-              <Group position="apart" mt="lg">
+              <Group justify="apart" mt="lg">
                 <Checkbox label="Remember me" {...form.getInputProps('remember')} />
                 <Anchor
                   component="button"
@@ -154,30 +159,29 @@ export const LoginForm = ({ email, setStage, onLogin, setEmail }: LoginFormProps
           {mode === 'totp' && (
             <Stack>
               <Text size="sm">Login code from your authenticator app.</Text>
-              <Group spacing={4}>
-                <Text span color="dimmed" size="xs">
+              <Group gap={4}>
+                <Text span c="dimmed" size="xs">
                   Return to{' '}
                 </Text>
-                <Anchor
-                  span
+                <Text component={"span"}
                   size="xs"
                   onClick={() => {
                     setMode('password');
                   }}
                 >
                   login.
-                </Anchor>
+                </Text>
               </Group>
               <PinInput
                 type="number"
                 size="md"
                 length={6}
-                required
+                // required // todo - does not exist
                 autoFocus={mode === 'totp'}
                 onComplete={onSubmit}
                 {...form.getInputProps('pin')}
               />
-              <Text color="red" size="xs">
+              <Text c="red" size="xs">
                 {form.errors.pin}
               </Text>
             </Stack>

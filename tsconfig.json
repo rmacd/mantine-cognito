@@ -1,12 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "@milkbar/mantine-cognito",
-  "extends": "tsconfig-milkbar/react.json",
+  "display": "rmacd-mantine-cognito",
+//  "extends": "./tsconfig.react.json",
   "include": ["src"],
   "exclude": ["./lib", "./cjs", "./esm"],
   "compilerOptions": {
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+
     "rootDir": "./src",
     "lib": ["dom", "esnext"],
-    "sourceMap": true
+    "sourceMap": true,
+    "outDir": "./dist"
   }
 }
